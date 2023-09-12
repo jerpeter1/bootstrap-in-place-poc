@@ -62,7 +62,8 @@ SSH_FLAGS = -o IdentityFile=$(SSH_KEY_PRIV_PATH) \
  			-o UserKnownHostsFile=/dev/null \
  			-o StrictHostKeyChecking=no
 
-HOST_IP = 192.168.126.10
+HOST_IP ?= 192.168.126.10
+MAC_ADDRESS ?= 52:54:00:ee:42:e1
 SSH_HOST = core@$(HOST_IP)
 
 $(SSH_KEY_DIR):
@@ -120,6 +121,7 @@ $(NET_CONFIG): $(NET_CONFIG_TEMPLATE)
 	    -e 's|CLUSTER_NAME|$(CLUSTER_NAME)|' \
 	    -e 's|BASE_DOMAIN|$(BASE_DOMAIN)|' \
 		-e 's/REPLACE_HOST_IP/$(HOST_IP)/' \
+		-e 's/MAC_ADDRESS/$(MAC_ADDRESS)/' \
 	    $(NET_CONFIG_TEMPLATE) > $@
 
 network: destroy-libvirt $(NET_CONFIG)

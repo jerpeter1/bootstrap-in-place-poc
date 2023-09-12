@@ -25,6 +25,8 @@ OS_VARIANT="rhel8.1"
 RAM_MB="${RAM_MB:-16384}"
 DISK_GB="${DISK_GB:-30}"
 CPU_CORE="${CPU_CORE:-6}"
+MAC_ADDRESS="${MAC_ADDRESS:-52:54:00:ee:42:e1}"
+
 
 rm -f nohup.out
 nohup virt-install \
@@ -34,7 +36,7 @@ nohup virt-install \
     --vcpus "${CPU_CORE}" \
     --os-variant="${OS_VARIANT}" \
     --import \
-    --network=network:"${NET_NAME}",mac=52:54:00:ee:42:e1 \
+    --network=network:"${NET_NAME}",mac="${MAC_ADDRESS}" \
     --graphics=none \
     --events on_reboot=restart \
     --cdrom "${RHCOS_ISO}" \
