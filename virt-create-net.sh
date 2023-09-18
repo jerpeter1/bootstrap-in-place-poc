@@ -37,7 +37,7 @@ fi
 
 sudo virsh net-create "${NET_XML}"
 
-sudo sed -i '/api.${CLUSTER_NAME}.${BASE_DOMAIN}/d' /etc/NetworkManager/dnsmasq.d/bip.conf
+sudo sed -i "/api.${CLUSTER_NAME}.${BASE_DOMAIN}/d" /etc/NetworkManager/dnsmasq.d/bip.conf
 echo address=/api.${CLUSTER_NAME}.${BASE_DOMAIN}/${HOST_IP} | sudo tee -a /etc/NetworkManager/dnsmasq.d/bip.conf
 echo -e "[main]\ndns=dnsmasq" | sudo tee /etc/NetworkManager/conf.d/bip.conf
 sudo systemctl reload NetworkManager.service
