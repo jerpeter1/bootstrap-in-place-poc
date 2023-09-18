@@ -15,7 +15,7 @@
       <hostname>canary-openshift-ingress-canary.apps.CLUSTER_NAME.BASE_DOMAIN</hostname>
     </host>
   </dns>
-  <ip family='ipv4' address='MACHINE_NETWORK_ADDRESS' prefix='MACHINE_NETWORK_PREFIX'>
+  <ip family='ipv4' address='MACHINE_NETWORK_BASE_ADDRESS.1' prefix='MACHINE_NETWORK_PREFIX'>
     <dhcp>
       <range start='MACHINE_NETWORK_BASE_ADDRESS.2' end='MACHINE_NETWORK_BASE_ADDRESS.254'/>
       <host mac='MAC_ADDRESS' name='VM_NAME' ip='REPLACE_HOST_IP'/>
